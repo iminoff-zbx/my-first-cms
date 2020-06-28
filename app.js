@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const hbs = require('express-handlebars');
-const {mongoDbUrl} = require('./config/keys');
+const {mongoDbUrl, PORT} = require('./config/configuration');
 
 const app = express();
 
@@ -28,13 +28,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 // Routes
-app.use('/', (req, res) => {
-    res.render('default/index')
-});
+const defaultRoutes = require('./routes/deafultRoutes');
+app.use('/', defaultRoutes);    
+// app.use('/admin', adminRoutes);
 
 
 
-
-
-const PORT = process.env.PORT || 3000;
 app.listen(PORT, console.log(`Server started on port ${PORT} ....`));
