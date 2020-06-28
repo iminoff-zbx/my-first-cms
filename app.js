@@ -2,12 +2,13 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const hbs = require('express-handlebars');
+const {mongoDbUrl} = require('./config/keys');
 
 const app = express();
 
 
 // Configure mongoose to connect MongoDB
-mongoose.connect('mongodb://localhost:27017/cms_app', {
+mongoose.connect(mongoDbUrl, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     })
@@ -27,7 +28,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 // Routes
-app.use('/', (req, res) => {res.send('Welcome to the CMS app')});
+app.use('/', (req, res) => {
+    res.render('default/index')
+});
 
 
 
