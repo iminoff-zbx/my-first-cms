@@ -1,2 +1,2 @@
 # my-first-cms
- This is my first Content Management Sistem
+ This is my first Content Management System

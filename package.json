@@ -1,0 +1,28 @@
+{
+  "name": "my-first-cms",
+  "version": "1.0.0",
+  "description": "This is my first Content Management System",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/navruz-zbx/my-first-cms.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/navruz-zbx/my-first-cms/issues"
+  },
+  "homepage": "https://github.com/navruz-zbx/my-first-cms#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^4.0.4",
+    "mongoose": "^5.9.20"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
