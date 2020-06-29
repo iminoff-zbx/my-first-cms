@@ -18,8 +18,11 @@
   },
   "homepage": "https://github.com/navruz-zbx/my-first-cms#readme",
   "dependencies": {
+    "connect-flash": "^0.1.1",
     "express": "^4.17.1",
     "express-handlebars": "^4.0.4",
+    "express-session": "^1.17.1",
+    "flash": "^1.1.0",
     "mongoose": "^5.9.20"
   },
   "devDependencies": {
