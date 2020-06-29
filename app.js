@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const path = require('path');
 const hbs = require('express-handlebars');
 const {mongoDbUrl, PORT, globalVariables} = require('./config/configuration');
-const flash = require('flash');
+const flash = require('connect-flash');
 const session = require('express-session');
 
 const app = express();
@@ -19,8 +19,8 @@ mongoose.connect(mongoDbUrl, {
 
 
 // Setup View Engine To Use Handlebars
-app.engine('handlebars', hbs({defaultLayout: 'default'}));
-app.set('view engine', 'handlebars');
+app.engine('.hbs', hbs({defaultLayout: 'default', extname: '.hbs'}));
+app.set('view engine', '.hbs');
 
 
 // Configure express
