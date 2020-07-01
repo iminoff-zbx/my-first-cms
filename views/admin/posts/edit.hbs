@@ -1,0 +1,54 @@
+<div class="container ml-5">
+    <h1 class="px-4">Edit Post</h1>
+
+    <div class="row p-4">
+        <div class="col-md-10">
+            <form action="/admin/posts/create" method="POST">
+
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        name="title" 
+                        id="title" 
+                        placeholder="Enter The Title"
+                        value="{{post.title}}"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="status">Status</label>
+                    <select name="status" id="status" class="form-control">
+                        <option value="public">Public</option>
+                        <option value="private">Private</option>
+                        <option value="draft">Draft</option>
+                    </select>
+                </div>
+
+                <div class="form-check ml-3">
+                    <label for="allowComments">
+                        <input 
+                            type="checkbox" 
+                            class="form-check-input" 
+                            id="allowComments"
+                            name="allowComments"
+                        > Allow Comments
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label for="description">Content</label>
+                    <textarea 
+                        name="description" 
+                        id="description" 
+                        class="form-control"  
+                        rows="10"
+                        placeholder="Enter your content here"
+                    >{{post.description}}
+                    </textarea>
+                </div>
+                <button class="btn btn-outline-success btn-lg">Create Post</button>
+            </form>
+        </div>
+    </div>
+</div>
