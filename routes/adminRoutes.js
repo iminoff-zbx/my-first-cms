@@ -11,17 +11,32 @@ router.route('/')
     .get(adminController.index);
 
 
+// Various admin post endpints
+
 router.route('/posts')
-    .get(adminController.getPosts)
+    .get(adminController.getPosts);
     
 
 router.route('/posts/create')
     .get(adminController.createPosts)
     .post(adminController.submitPosts);
 
+
 router.route('/posts/edit/:id')
     .get(adminController.editPost);
 
+
+router.route('/posts/delete/:id')
+    .delete(adminController.deletePost);
+
+// Admin Category Routes
+router.route('/categories')
+    .get(adminController.getCategories)
+
+
+    router.route('/categories')
+    .get(adminController.getCategories)
+    .post(adminController.createCategories)
 
     
 

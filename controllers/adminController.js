@@ -1,4 +1,5 @@
 const Post = require('../models/postModel').Post;
+const Category = require('../models/CategoryModel').Category;
 
 
 module.exports = {
@@ -6,10 +7,11 @@ module.exports = {
         res.render('admin/index')
     },
 
-    getPosts: (req, res) => {
-        Post.find().lean().then(posts => {
-            res.render('admin/posts/index', {posts: posts});
-        })
+
+    /** All Post Methods */
+    getPosts: async (req, res) => {
+        const posts = await Post.find({}).lean();
+        res.render('admin/posts/index', {posts: posts});
     },
 
     submitPosts: (req, res) => {
@@ -24,7 +26,6 @@ module.exports = {
         });
 
         newPost.save().then(post => {
-            console.log(post);
             req.flash('success-message', 'Post created successfully.');
             res.redirect('/admin/posts');
         })
@@ -41,6 +42,36 @@ module.exports = {
             res.render('admin/posts/edit', {post: post})
         })
 
-    }
+    },
 
+    deletePost: (req, res) => {
+        const id = req.params.id;
+        Post.findByIdAndRemove(id).lean().then(deletedPost => {
+            req.flash('success-message', `The post "${deletedPost.title}" has been deleted.`);
+            res.redirect('/admin/posts');
+        });
+    },
+
+
+    /** All Category Methods */
+    getCategories: (req, res) => {
+        Category.find().lean().then( cats => {
+            res.render('admin/categories/index', {categories: cats});
+        })
+    },
+
+    createCategories: (req, res) => {
+        var categoryName = req.body.name;
+
+        if (categoryName) {
+            const newCategory = new Category({
+                title: categoryName
+            });
+
+            newCategory.save().then(category => {
+                res.status(200).json(category);
+            });
+        }
+
+    }
 }

@@ -5,6 +5,7 @@ const hbs = require('express-handlebars');
 const {mongoDbUrl, PORT, globalVariables} = require('./config/configuration');
 const flash = require('connect-flash');
 const session = require('express-session');
+const methodOverride = require('method-override');
 
 const app = express();
 
@@ -21,6 +22,10 @@ mongoose.connect(mongoDbUrl, {
 // Setup View Engine To Use Handlebars
 app.engine('.hbs', hbs({defaultLayout: 'default', extname: '.hbs'}));
 app.set('view engine', '.hbs');
+
+
+// Method Override Middleware
+app.use(methodOverride('newMethod'));
 
 
 // Configure express

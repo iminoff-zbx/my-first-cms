@@ -29,9 +29,6 @@
     </div>
 </div>
 
-<script>
-    document.getElementById("year").innerHTML = new Date().getFullYear();
-</script>
 
 
 <!-- Bootstrap core JavaScript-->
@@ -48,3 +45,32 @@
 <!-- Custom scripts for this page-->
 <script src="/js/sb-admin-datatables.min.js"></script>
 <script src="/js/sb-admin-charts.min.js"></script>
+
+<script>
+    document.getElementById("year").innerHTML = new Date().getFullYear();
+    $("#create-category-button").on('click', function(e) {
+        e.preventDefault();
+        var data = $("#category-title").val();
+        $.ajax({
+            url: '/admin/categories',
+            type: 'POST',
+            data: {name: data},
+            success: function (response) {
+                var html = `
+                    <tr>
+                        <td>${response.title}</td>
+                        <td class="d-flex justify-content-center">
+                            <a href="/admin/categories/edit/${response._id}" class="btn btn-sm btn-warning mr-2" role="button">Edit</a>
+                            <form action="/admin/categories/${response._id}?newMethod=DELETE" method="post">
+                                <button class="btn btn-sm btn-danger" type="submit">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                `;
+
+                $(".category-list").append(html);
+            }
+        });
+         $("#category-title").val('');
+    });
+</script>
