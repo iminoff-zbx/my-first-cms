@@ -10,7 +10,10 @@ module.exports = {
 
     /** All Post Methods */
     getPosts: async (req, res) => {
-        const posts = await Post.find({}).lean();
+        const posts = await Post
+            .find({})
+            .populate('category')
+            .lean();
         res.render('admin/posts/index', {posts: posts});
     },
 
@@ -22,7 +25,8 @@ module.exports = {
             title: req.body.title,
             description: req.body.description,
             status: req.body.status,
-            allowComments: commentsAllowed
+            allowComments: commentsAllowed,
+            category: req.body.category
         });
 
         newPost.save().then(post => {
@@ -32,7 +36,10 @@ module.exports = {
     },
 
     createPosts: (req, res) => {
-        res.render('admin/posts/create')
+        Category.find().lean().then(cats => {
+
+            res.render('admin/posts/create', {categories: cats});
+        })
     },
 
     editPost: (req, res) => {
