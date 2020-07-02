@@ -53,14 +53,12 @@ module.exports = {
                 .lean()
                 .then(cats => {
                     res.render('admin/posts/edit', {post: post, categories: cats});
-                    console.log(post.title);
                 })
         })
 
     },
 
     editPostSubmit: async (req, res) => {
-        const commentsAllowed = req.body.allowComments ? true : false;
         const id = req.params.id;
         let post = await Post.findByIdAndUpdate(id, {
 
