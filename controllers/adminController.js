@@ -45,11 +45,46 @@ module.exports = {
     editPost: (req, res) => {
         const id = req.params.id;
 
-        Post.findByIdAndUpdate(id).lean().then(post => {
-            res.render('admin/posts/edit', {post: post})
+        Post.findByIdAndUpdate(id)
+        .lean()
+        .then(post => {
+            Category
+                .find()
+                .lean()
+                .then(cats => {
+                    res.render('admin/posts/edit', {post: post, categories: cats});
+                    console.log(post.title);
+                })
         })
 
     },
+
+    editPostSubmit: async (req, res) => {
+        const commentsAllowed = req.body.allowComments ? true : false;
+        const id = req.params.id;
+        let post = await Post.findByIdAndUpdate(id, {
+
+                title: req.body.title,
+                status: req.body.status,
+                allowComments: req.body.allowComments ? true : false,
+                description: req.body.description,
+                category: req.body.category
+                
+            },  
+            {
+                new: true
+            }
+        );
+            
+        post.save().then(updatePost => {
+            req.flash('success-message', `The Post ${updatePost.title} has been updated.`);
+            res.redirect('/admin/posts');
+
+        });
+
+    },
+
+
 
     deletePost: (req, res) => {
         const id = req.params.id;

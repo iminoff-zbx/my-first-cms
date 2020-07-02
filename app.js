@@ -6,6 +6,7 @@ const {mongoDbUrl, PORT, globalVariables} = require('./config/configuration');
 const flash = require('connect-flash');
 const session = require('express-session');
 const methodOverride = require('method-override');
+const {selectOption} = require('./config/customFunctions'); 
 
 const app = express();
 
@@ -20,7 +21,7 @@ mongoose.connect(mongoDbUrl, {
 
 
 // Setup View Engine To Use Handlebars
-app.engine('.hbs', hbs({defaultLayout: 'default', extname: '.hbs'}));
+app.engine('.hbs', hbs({defaultLayout: 'default', extname: '.hbs', helpers: {select: selectOption}}));
 app.set('view engine', '.hbs');
 
 
@@ -32,6 +33,7 @@ app.use(methodOverride('newMethod'));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, 'public')));
+mongoose.set('useFindAndModify', false);
 
 // Flash and Session
 app.use(session({
