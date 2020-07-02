@@ -1,5 +1,6 @@
 const Post = require('../models/PostModel').Post;
 const Category = require('../models/CategoryModel').Category;
+const { isEmpty } = require('../config/customFunctions');
 
 
 module.exports = {
@@ -21,12 +22,26 @@ module.exports = {
 
         const commentsAllowed = req.body.allowComments ? true : false;
 
+        // Check for any input file
+        let fileName = '';
+
+        if(!isEmpty(req.files)) {
+            let file = req.files.uploadFile;
+            fileName = file.name;
+            let uploadDir = './public/uploads/';
+            file.mv(uploadDir+fileName, (error) => {
+                if(error)
+                    throw error;
+            })
+        }
+
         const newPost = new Post({
             title: req.body.title,
             description: req.body.description,
             status: req.body.status,
             allowComments: commentsAllowed,
-            category: req.body.category
+            category: req.body.category,
+            file: `/uploads/${fileName}`
         });
 
         newPost.save().then(post => {

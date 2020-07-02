@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { isEmpty } = require('../config/customFunctions');
 const Schema = mongoose.Schema;
 
 const PostSchema = new Schema({
@@ -11,6 +12,11 @@ const PostSchema = new Schema({
     status: {
         type: String,
         default: 'public'
+    },
+
+    file: {
+        type: String,
+        default: ''
     },
 
     description: {
