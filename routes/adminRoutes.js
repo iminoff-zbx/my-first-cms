@@ -37,6 +37,7 @@ router.route('/categories')
 
 router.route('/categories/create')
     .get(adminController.getCategories)
+    .post(adminController.createCategories)
 
 router.route('/categories/edit/:id')
     .get(adminController.editCategoriesGetRoute)
