@@ -23,9 +23,17 @@
                 <td>{{allowComments}}</td>
                 <td>{{category.title}}</td>
                 <td class="d-flex justify-content-center">
-                    <a href="/admin/posts/edit/{{_id}}" class="btn btn-sm btn-warning mr-2">Edit Post</a>
+                    <a 
+                        href="/admin/posts/edit/{{_id}}" 
+                        class="btn btn-sm btn-warning mr-2">
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit
+                    </a>
                     <form action="/admin/posts/delete/{{_id}}?newMethod=DELETE" method="POST">
-                        <button type="submit" class="btn btn-sm btn-danger">Delete Post</button>
+                        <button 
+                            type="submit" 
+                            class="btn btn-sm btn-danger">
+                                <i class="fa fa-trash" aria-hidden="true"></i> delete
+                        </button>
                     </form>
                 </td>
             </tr>
