@@ -35,10 +35,12 @@ router.route('/categories')
     .get(adminController.getCategories)
 
 
-    router.route('/categories')
+router.route('/categories/create')
     .get(adminController.getCategories)
-    .post(adminController.createCategories)
 
+router.route('/categories/edit/:id')
+    .get(adminController.editCategoriesGetRoute)
+    .post(adminController.editCategoriesPostRoute);
     
 
 module.exports = router;
