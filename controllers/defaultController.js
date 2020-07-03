@@ -12,15 +12,24 @@ module.exports = {
 
         res.render('default/index', {posts: posts, categories: categories});
     },
+
+    /** Login Routes */
     loginGet: (req, res) => {
-        res.render('default/login')
+        res.render('default/login', {message: req.flash('error')})
     },
+
+
     loginPost: (req, res) => {
         res.send('Successfully logged in')
     },
+
+
     registerGet: (req, res) => {
         res.render('default/register')
     },
+
+
+    /** Register Routes */
     registerPost: (req, res) => {
         let errors = [];
 

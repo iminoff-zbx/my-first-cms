@@ -1,42 +1,35 @@
-<div class="card card-login amx-auto my-5">
-    <div class="card-header">Login</div>
+<div class="row d-flax justify-content-center">
+    <div class="col-md-6">
+        <div class="card card-login mx-auto my-5">
+            <div class="card-header">Login</div>
 
-    <div class="card-body">
-        <form action="/login" method="post">
-            <div class="form-group">
-                <label for="exampleInputEmail">Email address</label>
-                <input 
-                    type="email" 
-                    name="email" 
-                    class="form-control" 
-                    id="exampleInputEmail"
-                    aria-describedby="emailHelp"
-                    placeholder="Enter Email"
-                >
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword">Email address</label>
-                <input 
-                    type="password" 
-                    name="password" 
-                    class="form-control" 
-                    id="exampleInputPassword"
-                    placeholder="Password"
-                >
-            </div>
-            <div class="form-group">
-                <div class="form-check">
-                    <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input"> Remember Password
-                    </label>
+            <div class="card-body">
+                <form action="/login" method="post">
+                    <div class="form-group">
+                        <label for="exampleInputEmail">Email address</label>
+                        <input type="email" name="email" class="form-control" id="exampleInputEmail"
+                            aria-describedby="emailHelp" placeholder="Enter Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword">Email address</label>
+                        <input type="password" name="password" class="form-control" id="exampleInputPassword"
+                            placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input"> Remember Password
+                            </label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+                </form>
+                <div class="text-center">
+                    <a href="/register" class="d-block small mt-3">Register an Account</a>
+                    <a href="forgot-password.html" class="d-block small">Forgot Password</a>
+                    <a href="/" class="d-block small">Home Page</a>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary btn-block">Login</button>
-        </form>
-        <div class="text-center">
-            <a href="/register" class="d-block small mt-3">Register an Account</a>
-            <a href="forgot-password.html" class="d-block small">Forgot Password</a>
-            <a href="/" class="d-block small">Home Page</a>
         </div>
     </div>
 </div>
