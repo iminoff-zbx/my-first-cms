@@ -77,5 +77,16 @@ module.exports = {
             })
         }
 
+    },
+
+    singlePost: (req, res) => {
+        const id = req.params.id;
+        Post.findById(id).lean().then(post => {
+            if(!post) {
+                res.status(404).json({message: 'No Post found'});
+            } else {
+                res.render('default/singlePost', {post: post});
+            }
+        })
     }
 }

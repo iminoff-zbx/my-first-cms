@@ -68,6 +68,16 @@ router.route('/register')
     .post(defaultController.registerPost);
 
 
+router.route('/post/:id')
+    .get(defaultController.singlePost);
+
+
+router.get('/logout', (req, res) => {
+    req.logOut();
+    req.flash('success-message', 'Logout was successfull');
+    res.redirect('/');
+})
+
 
 
 

@@ -1,6 +1,7 @@
 const Post = require('../models/PostModel').Post;
 const Category = require('../models/CategoryModel').Category;
 const { isEmpty } = require('../config/customFunctions');
+const Comment = require('../models/CommentModel').Comment;
 
 
 module.exports = {
@@ -157,5 +158,11 @@ module.exports = {
 
             });
         }
+    },
+
+    getComments: (req, res) => {
+        Comment.find().lean().populate('user').then(comments => {
+            res.render('admin/comments/index', {comments: comments})
+        })
     }
 }

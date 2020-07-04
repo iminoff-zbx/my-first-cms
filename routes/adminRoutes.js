@@ -45,6 +45,11 @@ router.route('/categories/create')
 router.route('/categories/edit/:id')
     .get(adminController.editCategoriesGetRoute)
     .post(adminController.editCategoriesPostRoute);
+
+
+  /** Admin Comment Routes */
+router.route('/comments')
+    .get(adminController.getComments)
     
 
 module.exports = router;
