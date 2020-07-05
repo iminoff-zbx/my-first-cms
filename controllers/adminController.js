@@ -161,7 +161,10 @@ module.exports = {
     },
 
     getComments: (req, res) => {
-        Comment.find().lean().populate('user').then(comments => {
+        Comment.find()
+            .lean()
+            .populate('user')
+            .then(comments => {
             res.render('admin/comments/index', {comments: comments})
         })
     }

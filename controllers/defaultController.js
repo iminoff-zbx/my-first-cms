@@ -96,8 +96,8 @@ module.exports = {
 
     submitComment: (req, res) => {
 
-        if(req.user) {
-            Post.findById(req.body.id).lean().then(post => {
+        if (req.user) {
+            Post.findById(req.body.id).then(post => {
                 const newComment = new Comment({
                     user: req.user.id,
                     body: req.body.commentBody
@@ -106,16 +106,19 @@ module.exports = {
                 post.comments.push(newComment);
                 post.save().then(savedPost => {
                     newComment.save().then(savedComment => {
-                        req.flash('success-message', 'Your comment was submitted for review.');
-                        res.redirect(`/post/${post._id}`);
-                    })
-                })
+                      req.flash('success-message', 'Your comment was submitted for review.');
+                      res.redirect(`/post/${post._id}`);
+                    });
+                });
+
+
             })
-        } else {
-            req.flash('error-message', 'Login first to comment');
-            res.redirect(`/login`);
         }
 
+        else {
+            req.flash('error-message', 'Login first to comment');
+            res.redirect('/login');
+        }
 
     }
 }
