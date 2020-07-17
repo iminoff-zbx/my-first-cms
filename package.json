@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/navruz-zbx/my-first-cms.git"
+    "url": "git+https://github.com/iminoff-zbxx/my-first-cms.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/navruz-zbx/my-first-cms/issues"
+    "url": "https://github.com/iminoff-zbx/my-first-cms/issues"
   },
-  "homepage": "https://github.com/navruz-zbx/my-first-cms#readme",
+  "homepage": "https://github.com/iminoff-zbx/my-first-cms#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "connect-flash": "^0.1.1",
